@@ -35,6 +35,10 @@ function initializeSession() {
   };
   var publisher = OT.initPublisher('publisher', publisherOptions, handleError);
 
+  publisher.on('videoElementCreated', (event) => {
+    console.log("MEDIA STREAM", event.element.srcObject);
+  });
+
   // Connect to the session
   session.connect(token, function callback(error) {
     if (error) {
